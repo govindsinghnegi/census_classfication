@@ -1,5 +1,9 @@
-from sklearn.metrics import fbeta_score, precision_score, recall_score
-
+import pickle
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split, KFold, cross_validate
+from sklearn.metrics import fbeta_score, precision_score, recall_score, f1_score, make_scorer
+from sklearn.ensemble import RandomForestClassifier
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -17,8 +21,24 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
+    cv = KFold(n_splits=10)
 
-    pass
+    scoring = {
+        'precision': make_scorer(precision_score),
+        'recall': make_scorer(recall_score),
+        'f1_score': make_scorer(f1_score)
+    }
+
+    model = RandomForestClassifier(n_estimators=300)
+    model.fit(X_train, y_train)
+
+    scores = cross_validate(model, X_train, y_train, scoring=scoring, cv=cv)
+
+    print(f"precision Score: {np.mean(scores['test_precision']):.3f}")
+    print(f"recall Score: {np.mean(scores['test_recall']):.3f}")
+    print(f"f1 Score: {np.mean(scores['test_f1_score']):.3f}")
+
+    return model
 
 
 def compute_model_metrics(y, preds):
@@ -57,4 +77,5 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    pass
+    predictions = model.predict(X)
+    return predictions
