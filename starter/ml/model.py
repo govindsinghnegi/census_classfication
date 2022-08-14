@@ -1,3 +1,4 @@
+import logging
 import pickle
 import pandas as pd
 import numpy as np
@@ -5,6 +6,8 @@ from sklearn.model_selection import train_test_split, KFold, cross_validate
 from sklearn.metrics import fbeta_score, precision_score, recall_score, f1_score, make_scorer
 from sklearn.ensemble import RandomForestClassifier
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
+logger = logging.getLogger()
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
     """
@@ -34,9 +37,10 @@ def train_model(X_train, y_train):
 
     scores = cross_validate(model, X_train, y_train, scoring=scoring, cv=cv)
 
-    print(f"precision Score: {np.mean(scores['test_precision']):.3f}")
-    print(f"recall Score: {np.mean(scores['test_recall']):.3f}")
-    print(f"f1 Score: {np.mean(scores['test_f1_score']):.3f}")
+    logger.info(f"Model performance on training data : \n "
+                f"precision: {np.mean(scores['test_precision']):.3f}, "
+                f"recall: {np.mean(scores['test_recall']):.3f}, "
+                f"f1_score: {np.mean(scores['test_f1_score']):.3f}")
 
     return model
 
