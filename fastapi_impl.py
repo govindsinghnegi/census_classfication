@@ -1,21 +1,21 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class CensusData(BaseModel):
-    age: int
-    workclass: str
-    fnlgt: int
-    education: str
-    education_num: int
-    marital_status: str
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str
+    age: int = Field(example=30)
+    workclass: str = Field(example="Private")
+    fnlgt: int = Field(example=12345)
+    education: str = Field(example="Bachelors")
+    education_num: int = Field(example=13)
+    marital_status: str = Field(example="Separated")
+    occupation: str = Field(example="Sales")
+    relationship: str = Field(example="Unmarried")
+    race: str = Field(example="Black")
+    sex: str = Field(example="Male")
+    capital_gain: int = Field(example=0)
+    capital_loss: int = Field(example=0)
+    hours_per_week: int = Field(example=40)
+    native_country: str = Field(example="Mexico")
 
 app = FastAPI()
 

@@ -4,9 +4,9 @@ import json
 census_data = {
     'age': 30,
     'workclass': 'Private',
-    'fnlwgt': 12345,
+    'fnlgt': 12345,
     'education': 'Bachelors',
-    'education-num': 13,
+    'education_num': 13,
     'marital_status': 'Separated',
     'occupation': 'Sales',
     'relationship': 'Unmarried',
