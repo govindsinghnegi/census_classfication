@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, KFold, cross_validate
 from sklearn.metrics import fbeta_score, precision_score, recall_score, f1_score, make_scorer
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -32,7 +32,7 @@ def train_model(X_train, y_train):
         'f1_score': make_scorer(f1_score)
     }
 
-    model = RandomForestClassifier(n_estimators=300)
+    model = GradientBoostingClassifier()
     model.fit(X_train, y_train)
 
     scores = cross_validate(model, X_train, y_train, scoring=scoring, cv=cv)

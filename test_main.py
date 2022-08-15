@@ -82,7 +82,7 @@ def test_model_metrics(data, cat_features):
 
     precision, recall, fbeta = compute_model_metrics(y_test, preds)
 
-    assert precision > 0.7
-    assert recall > 0.6
+    assert precision > 0.75
+    assert recall > 0.55
     assert fbeta > 0.65
 
