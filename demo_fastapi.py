@@ -1,4 +1,5 @@
 import requests
+import json
 
 census_data = {
     'age': 30,
