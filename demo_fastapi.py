@@ -18,7 +18,7 @@ census_data = {
     'native_country': 'Mexico'
 }
 
-response = requests.post('https://census-classifcation.herokuapp.com/create_prediction', json=data)
+response = requests.post('https://census-classifcation.herokuapp.com/create_prediction', json=census_data)
 
 print(f'response code: {response.status_code}')
 print(f'response body: {response.json()}')
