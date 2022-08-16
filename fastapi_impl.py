@@ -53,20 +53,20 @@ async def exercise_function(census_data: CensusData):
     ]
 
     census_data_dict = {
-        'age': census_data.age,
-        'workclass': census_data.workclass,
-        'fnlgt': census_data.fnlgt,
-        'education': census_data.education,
-        'education-num': census_data.education_num,
-        'marital-status': census_data.marital_status,
-        'occupation': census_data.occupation,
-        'relationship': census_data.relationship,
-        'race': census_data.race,
-        'sex': census_data.sex,
-        'capital-gain': census_data.capital_gain,
-        'capital-loss': census_data.capital_loss,
-        'hours-per-week': census_data.hours_per_week,
-        'native-country': census_data.native_country,
+        'age': [census_data.age],
+        'workclass': [census_data.workclass],
+        'fnlgt': [census_data.fnlgt],
+        'education': [census_data.education],
+        'education-num': [census_data.education_num],
+        'marital-status': [census_data.marital_status],
+        'occupation': [census_data.occupation],
+        'relationship': [census_data.relationship],
+        'race': [census_data.race],
+        'sex': [census_data.sex],
+        'capital-gain': [census_data.capital_gain],
+        'capital-loss': [census_data.capital_loss],
+        'hours-per-week': [census_data.hours_per_week],
+        'native-country': [census_data.native_country]
     }
 
     df = pd.DataFrame(census_data_dict)
