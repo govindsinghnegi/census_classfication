@@ -81,4 +81,4 @@ async def exercise_function(census_data: CensusData):
 
     print(f'preds: {preds[0]}')
 
-    return {'prediction': preds[0]}
+    return {'prediction': f'{preds[0]}'}
