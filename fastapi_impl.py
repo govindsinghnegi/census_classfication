@@ -73,8 +73,7 @@ async def exercise_function(census_data: CensusData):
 
     print(df.shape)
 
-    X, _, _, _ = process_data(df, categorical_features=cat_features, label='salary',
-                                        training=False, encoder=saved_encoder, lb=saved_lb)
+    X, _, _, _ = process_data(df, categorical_features=cat_features, training=False, encoder=saved_encoder, lb=saved_lb)
 
     print(f'X shape: {X.shape}')
 
