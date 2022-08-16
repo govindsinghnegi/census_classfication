@@ -14,7 +14,7 @@ def test_get_malformed():
     r = client.get("/items")
     assert r.status_code != 200
 
-def test_post():
+def test_post_category_less_than_50K():
     census_data = {
     'age': 30,
     'workclass': 'Private',
@@ -36,6 +36,29 @@ def test_post():
     print(r.json())
     assert r.status_code == 200
     assert r.json() == {'prediction': '<=50K'}
+
+def test_post_category_more_than_50K():
+    census_data = {
+        'age': 35,
+        'workclass': 'Private',
+        'fnlgt': 123456,
+        'education': 'Doctorate',
+        'education_num': 16,
+        'marital_status': 'Married-civ-spouse',
+        'occupation': 'Prof-specialty',
+        'relationship': 'Husband',
+        'race': 'White',
+        'sex': 'Male',
+        'capital_gain': 0,
+        'capital_loss': 0,
+        'hours_per_week': 40,
+        'native_country': 'United-States'
+    }
+    data = json.dumps(census_data)
+    r = client.post("/create_prediction", data=data)
+    print(r.json())
+    assert r.status_code == 200
+    assert r.json() == {'prediction': '>50K'}
 
 def test_post_malformed():
     census_data = {
