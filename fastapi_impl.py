@@ -76,7 +76,7 @@ async def exercise_function(census_data: CensusData):
     X, _, _, _ = process_data(df, categorical_features=cat_features, label='salary',
                                         training=False, encoder=saved_encoder, lb=saved_lb)
 
-    logger.info(f'X shape: {X.shape}')
+    print(f'X shape: {X.shape}')
 
     preds = inference(saved_model, X)
 
