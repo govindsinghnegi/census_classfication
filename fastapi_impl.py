@@ -79,6 +79,8 @@ async def exercise_function(census_data: CensusData):
 
     preds = inference(saved_model, X)
 
+    response = '>50K' if preds[0] else '<=50K'
+
     print(f'preds: {preds[0]}')
 
-    return {'prediction': f'{preds[0]}'}
+    return {'prediction': response}
